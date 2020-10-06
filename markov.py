@@ -31,7 +31,7 @@ def make_chains(text_string):
         >>> sorted(chains.keys())
         [('hi', 'there'), ('mary', 'hi'), ('there', 'mary')]
 
-    Each item in chains is a list of all possible following words:
+    Each i       tem in chains is a list of all possible following words:
 
         >>> chains[('hi', 'there')]
         ['mary', 'juanita']
@@ -41,9 +41,17 @@ def make_chains(text_string):
     """
 
     chains = {}
-
     # your code goes here
+    words = text_string.split(" ")
+    words.append(None)
+    for i in range(len(words) - 2):
+        bigram = (words[i], words[i + 1])
+        value = words[i+2]
+        
+        if bigram not in chains:
+            chains[bigram] = []
 
+        chains[bigram].append(value)
     return chains
 
 
