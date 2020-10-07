@@ -46,12 +46,12 @@ def make_chains(text_string):
     words.append(None)
     for i in range(len(words) - 2):
         bigram = (words[i], words[i + 1])
-        value = words[i+2]
+        value = words[i + 2]
         
         if bigram not in chains:
             chains[bigram] = []
-
         chains[bigram].append(value)
+            
     return chains
 
 
@@ -59,7 +59,9 @@ def make_text(chains):
     """Return text from chains."""
 
     words = []
-
+    for key, value in chains.items():
+        new_key = key[1]
+        random_word = random.choice(value)
     # your code goes here
 
     return ' '.join(words)
