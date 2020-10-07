@@ -59,12 +59,21 @@ def make_text(chains):
     """Return text from chains."""
 
     words = []
-    for key, value in chains.items():
-        new_key = key[1]
-        random_word = random.choice(value)
+    first_key = choice(list(chains))
+    while first_key in chains:
+        new_key = (first_key[1], choice(chains[first_key]))
+        words.append(new_key[0])
+        words.append(new_key[1])
+        first_key = new_key
+        
     # your code goes here
-
     return ' '.join(words)
+
+    # box? Would you could you with a mouse? Would you could you
+    # in a house? Would you could you in a house? Would you
+    # could you in a house? Would you could you with a fox?
+    # Would you like green eggs and ham? Would you like them, Sam
+    # I am?
 
 
 input_path = 'green-eggs.txt'
